@@ -1,0 +1,30 @@
+template: Hello, %s!
+defaultName: Stranger
+
+# Logging settings.
+logging:
+
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO,
+  # DEBUG, TRACE, or ALL.
+  level: INFO
+
+  # Logger-specific levels.
+  loggers:
+
+    # Sets the level for 'com.example.app' to DEBUG.
+    com.lab.dropwizard.jersey: DEBUG
+
+  # Settings for logging to stdout.
+  console:
+
+    # If true, write log statements to stdout.
+    enabled: true
+
+    # Do not display log statements below this threshold to stdout.
+    threshold: ALL
+
+    # The time zone in which dates should be displayed.
+    timeZone: UTC
+
+    # A custom Logback format string.
+    logFormat: null
