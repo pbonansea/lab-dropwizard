@@ -13,18 +13,18 @@
 	<context:component-scan
 		base-package="com.lab.dropwizard.jersey.service" />
 		
-	<bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
-		<property name="dataSource" ref="dataSource"></property>
-		<property name="changeLog" value="classpath:changelog-db.xml"></property>
-		<property name="contexts" value="production"></property>
-	</bean>
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="${hibernate.connection.driver_class}" />
-		<property name="url" value="${hibernate.connection.url}" />
-		<property name="username" value="${hibernate.connection.username}" />
-		<property name="password" value="${hibernate.connection.password}" />
-	</bean>
-	<context:property-placeholder location="classpath:hibernate.properties" />	
+<!-- 	<bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase"> -->
+<!-- 		<property name="dataSource" ref="dataSource"></property> -->
+<!-- 		<property name="changeLog" value="classpath:changelog-db.xml"></property> -->
+<!-- 		<property name="contexts" value="production"></property> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="dataSource" -->
+<!-- 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+<!-- 		<property name="driverClassName" value="${hibernate.connection.driver_class}" /> -->
+<!-- 		<property name="url" value="${hibernate.connection.url}" /> -->
+<!-- 		<property name="username" value="${hibernate.connection.username}" /> -->
+<!-- 		<property name="password" value="${hibernate.connection.password}" /> -->
+<!-- 	</bean> -->
+<!-- 	<context:property-placeholder location="classpath:hibernate.properties" />	 -->
 	
 </beans>
