@@ -34,13 +34,21 @@ public class UserResource {
 	@Qualifier("userService")
 	private UserService userService;
 
+	public UserResource() { }
+
+	public UserResource(UserService userService) { 
+		this.userService = userService;
+	}
+
 	@POST
 	@Path("/create")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response create(@Valid User user) {
 		
 		try {
-		
+			
+			System.out.println("resource create");
+			
 			userService.create(user);
 
 			return Response.ok(user, MediaType.APPLICATION_JSON).build();

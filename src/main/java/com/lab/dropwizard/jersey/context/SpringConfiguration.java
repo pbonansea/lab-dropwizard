@@ -15,7 +15,6 @@ import org.springframework.context.annotation.ImportResource;
 @ImportResource("classpath:applicationContext.xml")
 @ComponentScan(basePackages={"com.lab.dropwizard.jersey.resource", 
 		"com.lab.dropwizard.jersey.filter"})
-// (basePackageClasses = PublicHomeResource.class)
 public class SpringConfiguration {
 
 }

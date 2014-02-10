@@ -26,21 +26,6 @@ public class HibernateUtil {
 	static {
 		try {
 			configuration = new Configuration().configure();
-//			if (ApplicationConstant.Runtime.ENVIRONMENT.getValue()
-//					.equals(ApplicationConstant.Runtime.TEST_ENVIRONMENT.getValue())) {
-//				try {
-//					Properties hibernateProp = new Properties();
-//					hibernateProp.load(HibernateUtil.class.getResourceAsStream(
-//						        "/com/lab/jersey/test/config/hibernateTest.properties"));
-//					configuration.addProperties(hibernateProp);									
-//				} catch (FileNotFoundException ex) {
-//					LOG.error("error hibernate init: " + ex.getMessage(), ex);
-//					throw new ExceptionInInitializerError(ex.getMessage());
-//				} catch (IOException ex) {
-//					LOG.error("error hibernate init: " + ex.getMessage(), ex);
-//					throw new ExceptionInInitializerError(ex.getMessage());
-//				}
-//			}
 			serviceRegistry = new StandardServiceRegistryBuilder().
 					applySettings(configuration.getProperties());
 			factory = configuration

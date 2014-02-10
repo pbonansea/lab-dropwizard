@@ -23,7 +23,6 @@ public class AllResourcesTest {
 
 	private static final String HOST = "localhost";
 	private static String PORT = "8080";
-	private static String DOMAIN = "lab-jersey-spring";
 		
 	/**
 	 * @throws java.lang.Exception
@@ -36,13 +35,13 @@ public class AllResourcesTest {
 	
 	}
 	
-	public static WebResource getWebTargetServiceInstance() {
+	public static WebResource getWebResourceInstance() {
 
 		if (service == null) {
 			if (client == null) {
 				client = Client.create();
 			}
-			service = client.resource("http://" + HOST + ":" + PORT).path(DOMAIN);
+			service = client.resource("http://" + HOST + ":" + PORT);
 		}
 		
 		return service;

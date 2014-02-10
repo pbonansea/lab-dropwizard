@@ -11,8 +11,9 @@ import org.apache.log4j.Logger;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
 import com.lab.dropwizard.jersey.exception.InvalidRequestExceptionMapper;
-import com.lab.dropwizard.jersey.filter.HibernateResponseFilter;
+import com.lab.dropwizard.jersey.health.DataBaseHealthCheck;
 import com.lab.dropwizard.jersey.health.TemplateHealthCheck;
+import com.sun.jersey.api.core.ResourceConfig;
 import com.yammer.dropwizard.Service;
 import com.yammer.dropwizard.config.Bootstrap;
 import com.yammer.dropwizard.config.Environment;
@@ -45,11 +46,14 @@ public class ApplicationService extends Service<ApplicationConfiguration> {
         
         // add check template
         environment.addHealthCheck(new TemplateHealthCheck(template));
+        environment.addHealthCheck(new DataBaseHealthCheck("data base connection"));
         
         // add provider
         environment.addProvider(InvalidRequestExceptionMapper.class);
         
-        environment.addFilter(new HibernateResponseFilter(), "/*");
+        // add response filter
+        environment.setJerseyProperty(ResourceConfig.PROPERTY_CONTAINER_RESPONSE_FILTERS, 
+        		"com.lab.dropwizard.jersey.filter.HibernateResponseFilter"); 
         
         AnnotationConfigWebApplicationContext parent = new AnnotationConfigWebApplicationContext();
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
@@ -73,15 +77,6 @@ public class ApplicationService extends Service<ApplicationConfiguration> {
         	environment.addResource(entry.getValue());
         }
         
-        
-//        UserResource userResource = new UserResource();
-//        AutowireCapableBeanFactory acbFactory = ctx.getAutowireCapableBeanFactory();
-//        acbFactory.autowireBean(userResource);
-        
-        // environment.addResource(new HelloWorldResource(template, defaultName));
-        // environment.addResource(userResource);
-        // environment.scanPackagesForResourcesAndProviders(PublicHomeResource.class);
-
     }
     
 }
